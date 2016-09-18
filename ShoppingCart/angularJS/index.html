@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SHOPPING_CART</title>
+        <script src="https://code.angularjs.org/1.5.0-rc.0/angular.min.js"></script>
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <script src="https://code.angularjs.org/1.5.0-rc.0/angular-animate.min.js"></script>
+    </head>
+    <body>
+        <style>
+.fade.ng-hide {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+</style>
+        
+        <div ng-app="MyApp" ng-cloak>
+        
+            
+            
+        <script src="shopping.js"></script>
+        <div ng-controller = "shoppingcart" class="w3-card-2 w3-margin" style="max-width:400px;">
+           <div>
+            <header class="w3-container w3-light-grey w3-padding-16"><h2>Shopping Cart Items</h2><button ng-disabled="!items.length" ng-click="clearall()" class="w3-btn  w3-left w3-ripple">Clear All</button><button ng-disabled="!items.length" ng-click="clearDone()" class="w3-btn w3-right w3-ripple">Clear Done</button></header>
+                <ul class="w3-ul">
+                    <li class="w3-padding-16" ng-repeat="x in items"><input type="checkbox" ng-model="x.done"/>  {{x.name}}<span ng-click="removeItem($index)" style="cursor:pointer;" class="w3-right w3-margin-right">  &times;</span><span ng-click="editItem($index)" style="cursor:pointer;" class="w3-right w3-margin-right">&#9998;</span>  </li>
+                </ul>
+           </div>
+            <div class="w3-container w3-light-grey w3-padding-16">
+                <div ng-show="addsec" class="fade">
+                <div class="w3-row w3-margin-top" >
+                    <div class="w3-col s10">
+                        <input name="add" type="text" ng-model="additem" class="w3-input w3-border w3-padding" placeholder="Add Item Here.."/>
+                    </div>
+                    <div class="w3-col s2">
+                        <button ng-disabled="hideerror" ng-click="addThisItem()" class="w3-btn w3-padding w3-green">Add</button>
+                    </div>
+                </div>
+                </div>
+                
+                <span ng-hide="hideit"class="w3-padding-left w3-text-red">Item already present in List</span>
+                
+                <div ng-show="!addsec" class="fade">
+                 <div class="w3-row w3-margin-top">
+                    <div class="w3-col s10">
+                        <input name="edit" type="text" ng-model="editvalue" class="w3-input w3-border w3-padding" placeholder="Edit Name Here.."/>
+                    </div>
+                    <div class="w3-col s2">
+                        <button ng-disabled="editerror" ng-click="editThisItem()" class="w3-btn w3-padding w3-green">&#8629;</button>
+                    </div>
+                </div>
+             </div>
+                
+            </div>
+            
+            
+            
+        </div>
+
+   
+        
+        
+             </div>
+    </body>
+</html>
